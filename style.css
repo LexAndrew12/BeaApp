@@ -1,0 +1,128 @@
+/* Alap stílusok */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em; /* Nagyobb betűméret */
+}
+
+header p {
+    margin: 5px 0 0;
+}
+
+main {
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+/* Hónap és hét választó */
+#selectors {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Mobilon törik a sor */
+    gap: 10px;
+}
+
+#selectors label {
+    font-weight: bold;
+}
+
+#selectors select {
+    padding: 10px;
+    font-size: 1em; /* Mobilbarát méret */
+}
+
+/* Számológép szekció */
+#calculator {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#display {
+    width: calc(100% - 20px);
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 2em;
+    text-align: right;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px; /* Kisebb távolság mobilon */
+}
+
+.buttons button {
+    background-color: #4CAF50; /* Zöld gombok */
+    color: white;
+    border: none;
+    padding: 10px; /* Kisebb gombok */
+}
+
+#tripleZero {
+    grid-column-start: span 2; /* A "000" gomb szélesebb */
+}
+
+/* Kategóriagombok */
+.category-buttons .category-group {
+    display: flex;
+}
+
+.category-buttons .category {
+    flex-grow: 1; /* Egyenlő méretű gombok */
+}
+
+/* Reszponzív design */
+@media (max-width: 768px) {
+    
+header h1 {
+        font-size: 2em; /* Még kisebb fejléc mobilon */
+}
+
+#selectors {
+        flex-direction: column; /* Egymás alá kerülnek a mezők mobilon */
+        gap: 15px; /* Nagyobb távolság mobilon */
+        align-items: stretch; /* Nyújtott mezők */
+}
+
+.buttons {
+        grid-template-columns: repeat(2, 1fr); /* Két oszlopos elrendezés mobilon */
+        gap: 15px; /* Nagyobb távolság mobilon */
+}
+
+.buttons button {
+        padding: 15px; /* Nagyobb érintési terület */
+        font-size: 1.2em; /* Nagyobb szövegméret érintéshez */
+}
+
+.category-buttons .category-group {
+        flex-direction: column; /* Egymás alá kerülnek a kategóriagombok mobilon */
+        gap: 10px; /* Távolság a gombok között */
+        margin-bottom: 15px; /* Távolság a csoportok között */
+}
+
+.category-buttons .category {
+        font-size: 1.2em; /* Nagyobb szövegméret kategóriagombokon */
+        padding: 15px; /* Nagyobb érintési terület kategóriagombokon */
+        text-align: center; /* Középre igazított szöveg */
+        border-radius: 8px; /* Lekerekített sarkok */
+        margin-bottom: 5px; /* Kis távolság az egyes Min gomboktól */
+}
+}

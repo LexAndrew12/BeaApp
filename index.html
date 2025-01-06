@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeaApp</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>BeaApp</h1>
+        <p>Kezeld egyszerűen és professzionálisan a bevételeidet és kiadásaidat!</p>
+    </header>
+
+    <main>
+        <!-- Hónap és hét választó -->
+        <section id="selectors">
+            <label for="month">Hónap:</label>
+            <select id="month">
+                <option value="January">Január</option>
+                <option value="February">Február</option>
+                <option value="March">Március</option>
+                <option value="April">Április</option>
+                <option value="May">Május</option>
+                <option value="June">Június</option>
+                <option value="July">Július</option>
+                <option value="August">Augusztus</option>
+                <option value="September">Szeptember</option>
+                <option value="October">Október</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+            </select>
+
+            <label for="week">Hét:</label>
+            <select id="week">
+                <option value="week1">1. hét</option>
+                <option value="week2">2. hét</option>
+                <option value="week3">3. hét</option>
+                <option value="week4">4. hét</option>
+            </select>
+        </section>
+
+        <!-- Számológép-szerű adatbevitel -->
+        <section id="calculator">
+            <h2>Adatok bevitele</h2>
+            <div id="display">0</div>
+            <div class="buttons">
+                <!-- Számgombok -->
+                <button class="number">1</button>
+                <button class="number">2</button>
+                <button class="number">3</button>
+                <button class="number">4</button>
+                <button class="number">5</button>
+                <button class="number">6</button>
+                <button class="number">7</button>
+                <button class="number">8</button>
+                <button class="number">9</button>
+                <!-- Utolsó sor -->
+                <button id="tripleZero" class="number">000</button>
+                <button class="number">0</button>
+                <button id="clear">Törlés</button>
+            </div>
+
+            <!-- Kategóriagombok -->
+            <div class="category-buttons">
+                <!-- Bevétel -->
+                <div class="category-group">
+                    <button data-category="income" class="category income">Bevétel +</button>
+                    <button data-category="income" class="category min income-min">Bevétel -</button>
+                </div>
+
+                <!-- Kiadás -->
+                <div class="category-group">
+                    <button data-category="expense" class="category expense">Kiadás +</button>
+                    <button data-category="expense" class="category min expense-min">Kiadás -</button>
+                </div>
+
+                <!-- Kemon Rendelés -->
+                <div class="category-group">
+                    <button data-category="kemonOrder" class="category kemonOrder">Kemon Rendelés +</button>
+                    <button data-category="kemonOrder" class="category min kemonOrder-min">Kemon Rendelés -</button>
+                </div>
+
+                <!-- Vendég Vásárlás -->
+                <div class="category-group">
+                    <button data-category="guestSales" class="category guestSales">Vendég Vásárlás +</button>
+                    <button data-category="guestSales" class="category min guestSales-min">Vendég Vásárlás -</button>
+                </div>
+            </div>
+
+            <!-- Gomb a statisztikák oldalra -->
+            <div style='margin-top: 20px;'>
+              <a href="./charts.html" style='text-decoration: none;'>
+                  <button style='background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 5px;'>Statisztikák megtekintése</button> 
+              </a> 
+            </div>
+
+        </section>
+
+        <!-- Aktuális heti összegek -->
+        <section id='current-totals'>
+            <h2>Aktuális heti összegek:</h2>
+
+            <!-- Táblázat az aktuális heti összegekhez -->
+            <table style='width: 100%; border-collapse: collapse;'>
+              <thead style='background-color: #f2f2f2;'>
+                  <tr>
+                      <th style='border: 1px solid #ddd; padding: 8px;'>Típus</th>
+                      <th style='border: 1px solid #ddd; padding: 8px;'>Összeg (Ft)</th>
+                  </tr>
+              </thead>
+
+              <tbody id='current-totals-display'>
+                  <!-- Az aktuális összegek itt jelennek meg -->
+                  <!-- Ezeket a JavaScript fogja frissíteni -->
+              </tbody>
+
+              <!-- Összesítés sor -->
+              <tfoot style='font-weight: bold;'>
+                  <tr style='background-color: #f9f9f9;'>
+                      <td>Összesen (Bevétel - Kiadás)</td><td id='net-income'>0 Ft</td></tr> 
+                  </tr> 
+                  <!-- Kemon rendelés - Vendég vásárlás különbség -->
+                  <<tr style='background-color: #f9f9f9;'>
+                      <<td>Kemon rendelés - Vendég vásárlás különbség<td><td id='kemon-guest-difference'>0 Ft<td></td> 
+                  </tr> 
+              </tfoot> 
+          </table> 
+
+          <!-- Havi összesítés -->
+          <<h3 style='margin-top: 20px;'>Aktuális havi összesítés:</h3> 
+          <<div id='monthly-summary'> 
+              Havi Bevétel: 0 Ft<br/> 
+              Havi Kiadás: 0 Ft<br/> 
+              Havi Különbség: 0 Ft<br/> 
+          </div> 
+
+      </section> 
+
+    </main>
+
+    <!-- JavaScript -->
+    <<script src="./script.js"></script> 
+
+  </body> 
+  </html> 
+
