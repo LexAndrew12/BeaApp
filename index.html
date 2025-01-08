@@ -6,6 +6,7 @@
     <title>BeaApp</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -14,55 +15,111 @@
     </header>
 
     <main>
-        <!-- Hónap és hét választó -->
-        <section id="selectors">
-            <label for="month">Hónap:</label>
-            <select id="month">
-                <option value="January">Január</option>
-                <option value="February">Február</option>
-                <option value="March">Március</option>
-                <option value="April">Április</option>
-                <option value="May">Május</option>
-                <option value="June">Június</option>
-                <option value="July">Július</option>
-                <option value="August">Augusztus</option>
-                <option value="September">Szeptember</option>
-                <option value="October">Október</option>
-                <option value="November">November</option>
-                <option value="December">December</option>
-            </select>
+        <!-- Bal oldali panel -->
+        <div class="left-panel">
+            <!-- Hónap és hét választó -->
+            <section id="selectors">
+                <div class="select-group">
+                    <label for="month">Hónap:</label>
+                    <select id="month">
+                        <option value="January">Január</option>
+                        <option value="February">Február</option>
+                        <option value="March">Március</option>
+                        <option value="April">Április</option>
+                        <option value="May">Május</option>
+                        <option value="June">Június</option>
+                        <option value="July">Július</option>
+                        <option value="August">Augusztus</option>
+                        <option value="September">Szeptember</option>
+                        <option value="October">Október</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+                    </select>
+                </div>
+                <div class="select-group">
+                    <label for="week">Hét:</label>
+                    <select id="week">
+                        <option value="week1">1. hét</option>
+                        <option value="week2">2. hét</option>
+                        <option value="week3">3. hét</option>
+                        <option value="week4">4. hét</option>
+                    </select>
+                </div>
+            </section>
 
-            <label for="week">Hét:</label>
-            <select id="week">
-                <option value="week1">1. hét</option>
-                <option value="week2">2. hét</option>
-                <option value="week3">3. hét</option>
-                <option value="week4">4. hét</option>
-            </select>
-        </section>
+            <!-- Számológép a főképernyőn marad -->
+            <section id="calculator">
+                <h2>Adatok bevitele</h2>
+                <div id="display">0</div>
+                <div class="buttons">
+                    <button class="number">1</button>
+                    <button class="number">2</button>
+                    <button class="number">3</button>
+                    <button class="number">4</button>
+                    <button class="number">5</button>
+                    <button class="number">6</button>
+                    <button class="number">7</button>
+                    <button class="number">8</button>
+                    <button class="number">9</button>
+                    <button id="tripleZero" class="number">000</button>
+                    <button class="number">0</button>
+                    <button id="clear">Törlés</button>
+                </div>
+                <!-- Bevitel gomb a számológépben -->
+                <button class="input-trigger-button" id="inputTrigger">Bevitel</button>
+            </section>
 
-        <!-- Számológép-szerű adatbevitel -->
-        <section id="calculator">
-            <h2>Adatok bevitele</h2>
-            <div id="display">0</div>
-            <div class="buttons">
-                <!-- Számgombok -->
-                <button class="number">1</button>
-                <button class="number">2</button>
-                <button class="number">3</button>
-                <button class="number">4</button>
-                <button class="number">5</button>
-                <button class="number">6</button>
-                <button class="number">7</button>
-                <button class="number">8</button>
-                <button class="number">9</button>
-                <!-- Utolsó sor -->
-                <button id="tripleZero" class="number">000</button>
-                <button class="number">0</button>
-                <button id="clear">Törlés</button>
+            <!-- Reset gombok -->
+            <div class="reset-buttons">
+                <button class="reset-button week" onclick="resetWeekData()">Heti adatok törlése</button>
+                <button class="reset-button" onclick="resetAllData()">Összes adat törlése</button>
+            </div>
+        </div>
+
+        <!-- Jobb oldali panel -->
+        <div class="right-panel">
+            <h2>Aktuális heti összegek</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Típus</th>
+                        <th>Összeg (Ft)</th>
+                    </tr>
+                </thead>
+                <tbody id="current-totals-display">
+                    <!-- ... dinamikus tartalom ... -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Összesen (Bevétel - Kiadás)</td>
+                        <td id="net-income">0 Ft</td>
+                    </tr>
+                    <tr>
+                        <td>Vendég vásárlás - Kemon rendelés különbség</td>
+                        <td id="kemon-guest-difference">0 Ft</td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <h3>Aktuális havi összesítés</h3>
+            <div id="monthly-summary" class="summary-box">
+                <!-- ... dinamikus tartalom ... -->
             </div>
 
-            <!-- Kategóriagombok -->
+            <div class="chart-link">
+                <a href="./charts.html" class="primary-button">
+                    Statisztikák megtekintése
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal - csak a kategória gombokkal -->
+    <div class="modal-overlay" id="inputModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            
+            <!-- Csak a kategóriagombok -->
             <div class="category-buttons">
                 <!-- Bevétel -->
                 <div class="category-group">
@@ -88,61 +145,10 @@
                     <button data-category="guestSales" class="category min guestSales-min">Vendég Vásárlás -</button>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- Gomb a statisztikák oldalra -->
-            <div style='margin-top: 20px;'>
-              <a href="./charts.html" style='text-decoration: none;'>
-                  <button style='background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 5px;'>Statisztikák megtekintése</button> 
-              </a> 
-            </div>
-
-        </section>
-
-        <!-- Aktuális heti összegek -->
-        <section id='current-totals'>
-            <h2>Aktuális heti összegek:</h2>
-
-            <!-- Táblázat az aktuális heti összegekhez -->
-            <table style='width: 100%; border-collapse: collapse;'>
-              <thead style='background-color: #f2f2f2;'>
-                  <tr>
-                      <th style='border: 1px solid #ddd; padding: 8px;'>Típus</th>
-                      <th style='border: 1px solid #ddd; padding: 8px;'>Összeg (Ft)</th>
-                  </tr>
-              </thead>
-
-              <tbody id='current-totals-display'>
-                  <!-- Az aktuális összegek itt jelennek meg -->
-                  <!-- Ezeket a JavaScript fogja frissíteni -->
-              </tbody>
-
-              <!-- Összesítés sor -->
-              <tfoot style='font-weight: bold;'>
-                  <tr style='background-color: #f9f9f9;'>
-                      <td>Összesen (Bevétel - Kiadás)</td><td id='net-income'>0 Ft</td></tr> 
-                  </tr> 
-                  <!-- Kemon rendelés - Vendég vásárlás különbség -->
-                  <<tr style='background-color: #f9f9f9;'>
-                      <<td>Kemon rendelés - Vendég vásárlás különbség<td><td id='kemon-guest-difference'>0 Ft<td></td> 
-                  </tr> 
-              </tfoot> 
-          </table> 
-
-          <!-- Havi összesítés -->
-          <<h3 style='margin-top: 20px;'>Aktuális havi összesítés:</h3> 
-          <<div id='monthly-summary'> 
-              Havi Bevétel: 0 Ft<br/> 
-              Havi Kiadás: 0 Ft<br/> 
-              Havi Különbség: 0 Ft<br/> 
-          </div> 
-
-      </section> 
-
-    </main>
-
-    <!-- JavaScript -->
-    <<script src="./script.js"></script> 
-
-  </body> 
-  </html> 
+    <script src="./script.js"></script>
+</body>
+</html> 
 

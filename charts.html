@@ -5,36 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Statisztikák - BeaApp</title>
     <link rel="stylesheet" href="./style.css">
-    <script src='https://cdn.jsdelivr.net/npm/chart.js'></script> 
-    <!-- Chart.js integrálása -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <header>
+        <h1>Statisztikák - BeaApp</h1>
+        <p>Áttekintő nézet a bevételekről és kiadásokról</p>
+    </header>
 
-<header> 
-   <!-- Fejléc -->
-   <h1>Statisztikák - BeaApp</h1> 
-   <!-- Cím -->
-   </header> 
+    <main style="display: block; padding: 2rem;">
+        <!-- Vissza gomb -->
+        <div class="back-button-container">
+            <a href="./index.html" class="back-button">
+                ← Vissza a főoldalra
+            </a>
+        </div>
 
-   <!-- Fő tartalom -->
-   <main> 
-      <!-- Vissza gomb az index oldalra -->
-      <div style='margin: 20px;'>
-          <a href="./index.html" style='text-decoration: none;'>
-              <button style='background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 5px;'>Vissza az Indexre</button> 
-          </a> 
-      </div>
+        <!-- Statisztikák szekció -->
+        <section id="charts" class="charts-container">
+            <h2>Havi összesítés</h2>
+            <!-- A diagramok ide kerülnek -->
+        </section>
+    </main>
 
-      <!-- Statisztikák szekciója --> 
-      <section id='charts'> 
-         <!-- A diagramok itt jelennek meg --> 
-      </section> 
-   </main>
-
-   <!-- JavaScript --> 
-   <!-- Az adatok megjelenítése --> 
-   <<script src='./script.js'></script> 
-
-   </body> 
-   </html> 
+    <script src="./script.js"></script>
+</body>
+</html> 
 

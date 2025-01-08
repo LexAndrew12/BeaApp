@@ -1,128 +1,549 @@
-/* Alap stílusok */
+/* Modern Dark Theme */
+:root {
+    --primary: #6C63FF;
+    --primary-dark: #5A52E0;
+    --surface: #1E1E2E;
+    --surface-light: #282838;
+    --text: #E2E2E4;
+    --text-secondary: #9999A8;
+    --success: #72F2BE;
+    --error: #FF5757;
+    --warning: #FF9800;
+    --border: rgba(255,255,255,0.1);
+}
+
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--surface);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: #4CAF50;
-    color: white;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    padding: 2rem;
     text-align: center;
-    padding: 20px 0;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 2.5em; /* Nagyobb betűméret */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
 
 header p {
-    margin: 5px 0 0;
+    max-width: 600px;
+    margin: 1rem auto 0;
+    opacity: 0.9;
 }
 
 main {
-    max-width: 900px;
-    margin: 20px auto;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem;
 }
 
-/* Hónap és hét választó */
-#selectors {
+/* Bal oldali panel (számológép) */
+.left-panel {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; /* Mobilon törik a sor */
-    gap: 10px;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-#selectors label {
-    font-weight: bold;
+#selectors {
+    background-color: var(--surface-light);
+    padding: 1.5rem;
+    border-radius: 16px;
+    display: flex;
+    gap: 1rem;
 }
 
-#selectors select {
-    padding: 10px;
-    font-size: 1em; /* Mobilbarát méret */
-}
-
-/* Számológép szekció */
+/* Számológép újratervezése */
 #calculator {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: var(--surface-light);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 #display {
-    width: calc(100% - 20px);
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+    background-color: var(--surface);
+    color: var(--text);
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 1.2rem;
     font-size: 2em;
+    font-weight: 600;
     text-align: right;
+    margin-bottom: 1.2rem;
+    font-family: 'Inter', monospace;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
 }
 
+/* Számgombok grid elrendezése */
 .buttons {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px; /* Kisebb távolság mobilon */
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
 }
 
+/* Számgombok stílusa */
 .buttons button {
-    background-color: #4CAF50; /* Zöld gombok */
+    background: linear-gradient(145deg, var(--primary), var(--primary-dark));
     color: white;
     border: none;
-    padding: 10px; /* Kisebb gombok */
+    border-radius: 12px;
+    padding: 1rem;
+    font-size: 1.4em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-#tripleZero {
-    grid-column-start: span 2; /* A "000" gomb szélesebb */
+.buttons button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
 }
 
-/* Kategóriagombok */
-.category-buttons .category-group {
+.buttons button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Törlés gomb egyedi stílusa */
+#clear {
+    background: linear-gradient(145deg, #ff5757, #ff3333);
+}
+
+/* Kategória gombok újratervezése */
+.category-buttons {
+    margin-top: 1.5rem;
+}
+
+.category-group {
+    margin-bottom: 1rem;
+}
+
+.category-buttons .category {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.4rem 0;
+    font-size: 1.1em;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Kategória gombok színei */
+.category.income {
+    background: linear-gradient(145deg, #72F2BE, #50E0A0);
+    color: var(--surface);
+}
+
+.category.expense {
+    background: linear-gradient(145deg, #FF5757, #FF3333);
+    color: white;
+}
+
+.category.kemonOrder {
+    background: linear-gradient(145deg, #6C63FF, #5A52E0);
+    color: white;
+}
+
+.category.guestSales {
+    background: linear-gradient(145deg, #FF9800, #F57C00);
+    color: white;
+}
+
+/* Mínusz gombok stílusa */
+.category.min {
+    opacity: 0.8;
+    background: var(--surface);
+    border: 2px solid currentColor;
+    color: inherit;
+}
+
+.category.min:hover {
+    opacity: 1;
+}
+
+/* Reszponzív igazítások */
+@media (max-width: 768px) {
+    #calculator {
+        padding: 1rem;
+    }
+
+    .buttons button {
+        padding: 1.2rem;
+        font-size: 1.6em;
+    }
+
+    .category-buttons .category {
+        padding: 1rem;
+        font-size: 1.2em;
+    }
+}
+
+/* Jobb oldali panel (összegzések) */
+.right-panel {
+    background-color: var(--surface-light);
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+/* Táblázat újratervezése */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 1rem 0;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    background-color: var(--surface);
+    color: var(--text);
+    font-weight: 600;
+}
+
+td {
+    color: var(--text);
+}
+
+tfoot td {
+    background-color: var(--surface);
+    font-weight: 600;
+}
+
+/* Reset gombok újratervezése */
+.reset-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.reset-button {
+    background-color: var(--error);
+    color: var(--text);
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9em;
+    font-weight: 500;
+    width: 100%;
+}
+
+.reset-button.week {
+    background-color: var(--warning);
+}
+
+/* Reszponzív design finomítása */
+@media (max-width: 1024px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 1.5rem 1rem;
+    }
+
+    main {
+        padding: 1rem;
+    }
+
+    #selectors {
+        flex-direction: column;
+    }
+
+    .reset-buttons {
+        flex-direction: column;
+    }
+}
+
+/* Gombok és interakciók finomítása */
+button {
+    position: relative;
+    overflow: hidden;
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(255,255,255,0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+button:hover::after {
+    opacity: 1;
+}
+
+/* Statisztika oldal specifikus stílusok */
+.charts-container {
+    background-color: var(--surface-light);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.charts-container h2 {
+    color: var(--text);
+    margin-bottom: 2rem;
+}
+
+.back-button-container {
+    margin-bottom: 2rem;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(145deg, var(--primary), var(--primary-dark));
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.back-button:hover {
+    transform: translateX(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Chart.js módosítások */
+canvas {
+    background-color: var(--surface);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-top: 1rem;
+    max-width: 100%;
+    height: auto !important;
+}
+
+/* Reszponzív igazítások */
+@media (max-width: 768px) {
+    .charts-container {
+        padding: 1rem;
+    }
+
+    .back-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Modal styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-overlay.active {
     display: flex;
 }
 
-.category-buttons .category {
-    flex-grow: 1; /* Egyenlő méretű gombok */
+.modal-content {
+    background-color: var(--surface-light);
+    border-radius: 20px;
+    padding: 1.5rem;
+    width: 90%;
+    max-width: 400px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalSlideUp 0.3s ease;
 }
 
-/* Reszponzív design */
+@keyframes modalSlideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* Bevitel trigger gomb módosítása */
+.input-trigger-button {
+    width: 100%;
+    background: linear-gradient(145deg, var(--primary), var(--primary-dark));
+    color: white;
+    padding: 1rem;
+    border-radius: 12px;
+    border: none;
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin-top: 0.8rem;
+}
+
+.input-trigger-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.input-trigger-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Mobilra optimalizálás */
 @media (max-width: 768px) {
-    
-header h1 {
-        font-size: 2em; /* Még kisebb fejléc mobilon */
+    .input-trigger-button {
+        padding: 1.2rem;
+        font-size: 1.3em;
+    }
 }
 
-#selectors {
-        flex-direction: column; /* Egymás alá kerülnek a mezők mobilon */
-        gap: 15px; /* Nagyobb távolság mobilon */
-        align-items: stretch; /* Nyújtott mezők */
+/* Auth styles */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--surface), var(--surface-light));
 }
 
-.buttons {
-        grid-template-columns: repeat(2, 1fr); /* Két oszlopos elrendezés mobilon */
-        gap: 15px; /* Nagyobb távolság mobilon */
+.auth-box {
+    background-color: var(--surface-light);
+    padding: 2rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
 }
 
-.buttons button {
-        padding: 15px; /* Nagyobb érintési terület */
-        font-size: 1.2em; /* Nagyobb szövegméret érintéshez */
+.auth-box h2 {
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--text);
 }
 
-.category-buttons .category-group {
-        flex-direction: column; /* Egymás alá kerülnek a kategóriagombok mobilon */
-        gap: 10px; /* Távolság a gombok között */
-        margin-bottom: 15px; /* Távolság a csoportok között */
+.form-group {
+    margin-bottom: 1.5rem;
 }
 
-.category-buttons .category {
-        font-size: 1.2em; /* Nagyobb szövegméret kategóriagombokon */
-        padding: 15px; /* Nagyobb érintési terület kategóriagombokon */
-        text-align: center; /* Középre igazított szöveg */
-        border-radius: 8px; /* Lekerekített sarkok */
-        margin-bottom: 5px; /* Kis távolság az egyes Min gomboktól */
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text);
 }
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    background-color: var(--surface);
+    color: var(--text);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+.auth-button {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(145deg, var(--primary), var(--primary-dark));
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.auth-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.auth-switch {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.auth-switch a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Error message styles */
+.error-message {
+    background-color: var(--error);
+    color: white;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
 }
