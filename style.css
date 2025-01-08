@@ -1,4 +1,4 @@
-/* Modern Dark Theme */
+/* Modern Dark Theme - Egységesített színek */
 :root {
     --primary: #6C63FF;
     --primary-dark: #5A52E0;
@@ -6,33 +6,115 @@
     --surface-light: #282838;
     --text: #E2E2E4;
     --text-secondary: #9999A8;
-    --success: #72F2BE;
     --error: #FF5757;
+    --success: #72F2BE;
     --warning: #FF9800;
     --border: rgba(255,255,255,0.1);
+    --gradient: linear-gradient(135deg, #6C63FF, #FF6B95);
+    --card-bg: rgba(40, 40, 56, 0.98);
 }
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--surface);
+    background: linear-gradient(135deg, #1a1b2e 0%, #131320 100%);
     color: var(--text);
-    line-height: 1.6;
     min-height: 100vh;
     margin: 0;
     padding: 0;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(108, 99, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 107, 149, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
 }
 
 header {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    padding: 2rem;
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+    padding: 1.5rem;
     text-align: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 10px rgba(108, 99, 255, 0.2);
 }
 
 header p {
+    color: var(--text-secondary);
+    margin: 0;
+    font-size: 1rem;
     max-width: 600px;
-    margin: 1rem auto 0;
-    opacity: 0.9;
+}
+
+.logout-button {
+    position: absolute;
+    top: 50%;
+    right: 1.5rem;
+    transform: translateY(-50%);
+    padding: 0.8rem 1.5rem;
+    background: var(--gradient);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+}
+
+.logout-button:hover {
+    transform: translateY(-50%) translateY(-2px);
+    box-shadow: 
+        0 8px 25px rgba(108, 99, 255, 0.4),
+        0 2px 10px rgba(108, 99, 255, 0.2);
+}
+
+/* Reszponzív beállítások */
+@media (max-width: 768px) {
+    header {
+        padding: 1.2rem;
+    }
+    
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    header p {
+        font-size: 0.9rem;
+        padding: 0 1rem;
+    }
+    
+    .back-button {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+        left: 1rem;
+    }
 }
 
 main {
@@ -52,72 +134,236 @@ main {
 }
 
 #selectors {
-    background-color: var(--surface-light);
-    padding: 1.5rem;
-    border-radius: 16px;
-    display: flex;
-    gap: 1rem;
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Számológép újratervezése */
+#selectors:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.select-group {
+    margin-bottom: 1.5rem;
+}
+
+.select-group:last-child {
+    margin-bottom: 0;
+}
+
+.select-group label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: 0.3px;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.select-group select {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    background: rgba(30, 30, 46, 0.6);
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    color: var(--text);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%239999A8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.2em;
+    padding-right: 3rem;
+}
+
+.select-group select:hover {
+    background-color: rgba(30, 30, 46, 0.8);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+.select-group select:focus {
+    outline: none;
+    border-color: var(--primary);
+    background-color: rgba(30, 30, 46, 0.8);
+    box-shadow: 
+        0 0 0 4px rgba(108, 99, 255, 0.15),
+        0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Reszponzív beállítások */
+@media (max-width: 768px) {
+    #selectors {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .select-group {
+        margin-bottom: 1.2rem;
+    }
+    
+    .select-group label {
+        font-size: 0.95rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .select-group select {
+        padding: 0.8rem 1rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* Számológép modern design */
 #calculator {
-    background-color: var(--surface-light);
-    border-radius: 20px;
-    padding: 1.5rem;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-    max-width: 400px;
-    margin: 0 auto;
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#calculator h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
 }
 
 #display {
-    background-color: var(--surface);
-    color: var(--text);
-    border: 2px solid rgba(255,255,255,0.1);
-    border-radius: 12px;
+    background: rgba(30, 30, 46, 0.6);
     padding: 1.2rem;
-    font-size: 2em;
-    font-weight: 600;
+    border-radius: 16px;
     text-align: right;
-    margin-bottom: 1.2rem;
-    font-family: 'Inter', monospace;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+    border: 2px solid var(--border);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
 }
 
-/* Számgombok grid elrendezése */
 .buttons {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.8rem;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1.5rem;
 }
 
-/* Számgombok stílusa */
 .buttons button {
-    background: linear-gradient(145deg, var(--primary), var(--primary-dark));
-    color: white;
+    padding: 1rem;
+    font-size: 1.2rem;
     border: none;
     border-radius: 12px;
-    padding: 1rem;
-    font-size: 1.4em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    color: var(--text);
+    background: rgba(30, 30, 46, 0.6);
+    border: 1px solid var(--border);
+}
+
+.buttons .number {
+    background: rgba(108, 99, 255, 0.1);
+    color: var(--text);
+}
+
+.buttons .number:hover {
+    background: rgba(108, 99, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(108, 99, 255, 0.2);
+}
+
+.buttons #clear {
+    background: rgba(255, 87, 87, 0.1);
+    color: #FF5757;
+}
+
+.buttons #clear:hover {
+    background: rgba(255, 87, 87, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 87, 87, 0.2);
+}
+
+.buttons #tripleZero {
+    background: rgba(108, 99, 255, 0.15);
+}
+
+.input-trigger-button {
+    width: 100%;
+    padding: 1.2rem;
+    background: var(--gradient);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.2);
 }
 
-.buttons button:hover {
+.input-trigger-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    box-shadow: 
+        0 8px 25px rgba(108, 99, 255, 0.4),
+        0 2px 10px rgba(108, 99, 255, 0.2);
 }
 
-.buttons button:active {
-    transform: translateY(1px);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+.input-trigger-button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.2);
 }
 
-/* Törlés gomb egyedi stílusa */
-#clear {
-    background: linear-gradient(145deg, #ff5757, #ff3333);
+/* Reszponzív beállítások */
+@media (max-width: 768px) {
+    #calculator {
+        padding: 1.5rem;
+    }
+    
+    #display {
+        font-size: 1.8rem;
+        padding: 1rem;
+    }
+    
+    .buttons {
+        gap: 0.6rem;
+    }
+    
+    .buttons button {
+        padding: 0.8rem;
+        font-size: 1.1rem;
+    }
+    
+    .input-trigger-button {
+        padding: 1rem;
+        font-size: 1rem;
+    }
 }
 
 /* Kategória gombok újratervezése */
@@ -300,58 +546,184 @@ button:hover::after {
 
 /* Statisztika oldal specifikus stílusok */
 .charts-container {
-    background-color: var(--surface-light);
-    border-radius: 16px;
     padding: 2rem;
-    margin-top: 2rem;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-.charts-container h2 {
+/* Hónap választó konténer */
+.select-container {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    max-width: 400px;
+    margin: 2rem auto;
+}
+
+.select-container label {
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+
+.select-container select {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    background: rgba(30, 30, 46, 0.6);
+    border: 2px solid var(--border);
+    border-radius: 16px;
     color: var(--text);
-    margin-bottom: 2rem;
-}
-
-.back-button-container {
-    margin-bottom: 2rem;
-}
-
-.back-button {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.8rem 1.5rem;
-    background: linear-gradient(145deg, var(--primary), var(--primary-dark));
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
+    font-size: 1rem;
     font-weight: 500;
-    transition: all 0.2s ease;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%239999A8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.2em;
+    padding-right: 3rem;
+}
+
+.select-container select:hover {
+    background-color: rgba(30, 30, 46, 0.8);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.select-container select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.15);
+}
+
+/* Chart kártyák grid elrendezése */
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 600px), 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Chart kártyák stílusa */
+.chart-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chart-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.chart-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+
+/* Vissza gomb újratervezése */
+.back-button {
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.8rem 1.5rem;
+    background: var(--gradient);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.2);
 }
 
 .back-button:hover {
-    transform: translateX(-5px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transform: translateY(-50%) translateY(-2px);
+    box-shadow: 
+        0 8px 25px rgba(108, 99, 255, 0.4),
+        0 2px 10px rgba(108, 99, 255, 0.2);
 }
 
-/* Chart.js módosítások */
-canvas {
-    background-color: var(--surface);
-    border-radius: 12px;
+/* Summary card stílus */
+.summary-card {
+    background: var(--card-bg);
+}
+
+.summary-item {
     padding: 1rem;
-    margin-top: 1rem;
-    max-width: 100%;
-    height: auto !important;
+    border-bottom: 1px solid var(--border);
+    transition: background-color 0.3s ease;
 }
 
-/* Reszponzív igazítások */
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.summary-item:hover {
+    background: rgba(108, 99, 255, 0.05);
+}
+
+.summary-item h4 {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.summary-item p {
+    color: var(--text);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Reszponzív beállítások */
 @media (max-width: 768px) {
     .charts-container {
         padding: 1rem;
     }
-
+    
+    .chart-card {
+        padding: 1.5rem;
+    }
+    
+    .chart-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .select-container {
+        padding: 1.5rem;
+        margin: 1rem auto;
+    }
+    
     .back-button {
-        width: 100%;
-        justify-content: center;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
     }
 }
 
@@ -612,4 +984,46 @@ canvas {
 
 .back-button:hover {
     background: var(--primary-color-dark);
+}
+
+/* Statisztikák gomb stílusa */
+.chart-link {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.primary-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--gradient);
+    color: white;
+    border: none;
+    border-radius: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.2);
+}
+
+.primary-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 25px rgba(108, 99, 255, 0.4),
+        0 2px 10px rgba(108, 99, 255, 0.2);
+}
+
+.primary-button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.2);
+}
+
+/* Reszponzív beállítások */
+@media (max-width: 768px) {
+    .primary-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.95rem;
+    }
 }

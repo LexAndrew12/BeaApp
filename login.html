@@ -4,23 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bejelentkezés - BeaApp</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./auth.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="auth-container">
         <div class="auth-box" id="loginBox">
-            <h2>Bejelentkezés</h2>
+            <div class="auth-header">
+                <h2>Bejelentkezés</h2>
+                <p class="auth-subtitle">Üdvözöl a BeaApp! </p>
+            </div>
             <form id="loginForm">
                 <div class="form-group">
-                    <label for="loginEmail">Email cím</label>
-                    <input type="email" id="loginEmail" required>
+                    <label for="loginEmail">
+                        <span class="label-icon">✉️</span>
+                        E-mail cím
+                    </label>
+                    <div class="input-wrapper">
+                        <input type="email" id="loginEmail" placeholder="pelda@email.com" required>
+                        <div class="input-highlight"></div>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="loginPassword">Jelszó</label>
-                    <input type="password" id="loginPassword" required>
+                    <label for="loginPassword">
+                        <span class="label-icon">🔒</span>
+                        Jelszó
+                    </label>
+                    <div class="input-wrapper">
+                        <input type="password" id="loginPassword" placeholder="••••••••" required>
+                        <div class="input-highlight"></div>
+                    </div>
                 </div>
-                <button type="submit" class="auth-button">Bejelentkezés</button>
+                <button type="submit" class="auth-button">
+                    <span class="button-text">Bejelentkezés</span>
+                    <span class="button-icon">→</span>
+                </button>
             </form>
             <p class="auth-switch">Még nincs fiókod? <a href="#" id="showRegister">Regisztrálj!</a></p>
         </div>
@@ -48,6 +66,10 @@
             </form>
             <p class="auth-switch">Már van fiókod? <a href="#" id="showLogin">Jelentkezz be!</a></p>
         </div>
+    </div>
+
+    <div class="copyright">
+        BeaApp <span class="copyright-symbol">©</span> 2025
     </div>
 
     <script src="./auth.js"></script>
