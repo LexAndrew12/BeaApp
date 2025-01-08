@@ -109,6 +109,15 @@ document.addEventListener('DOMContentLoaded', function() {
             updateCurrentWeekTotals();
         }
     };
+
+    // Hónap és hét választó események hozzáadása
+    monthSelect.addEventListener('change', () => {
+        updateCurrentWeekTotals();
+    });
+
+    weekSelect.addEventListener('change', () => {
+        updateCurrentWeekTotals();
+    });
 });
 
 // Adatok mentése
