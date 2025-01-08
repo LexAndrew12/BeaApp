@@ -3,33 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Statisztikák - BeaApp</title>
-    <link rel="stylesheet" href="./style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>BeaApp - Statisztikák</title>
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Statisztikák - BeaApp</h1>
-        <p>Áttekintő nézet a bevételekről és kiadásokról</p>
+        <h1>BeaApp - Statisztikák</h1>
+        <a href="index.html" class="back-button">Vissza a főoldalra</a>
     </header>
 
-    <main style="display: block; padding: 2rem;">
-        <!-- Vissza gomb -->
-        <div class="back-button-container">
-            <a href="./index.html" class="back-button">
-                ← Vissza a főoldalra
-            </a>
+    <main class="charts-container">
+        <!-- Hónap választó -->
+        <div class="select-container">
+            <label for="monthSelect">Válassz hónapot:</label>
+            <select id="monthSelect">
+                <option value="January">Január</option>
+                <option value="February">Február</option>
+                <option value="March">Március</option>
+                <option value="April">Április</option>
+                <option value="May">Május</option>
+                <option value="June">Június</option>
+                <option value="July">Július</option>
+                <option value="August">Augusztus</option>
+                <option value="September">Szeptember</option>
+                <option value="October">Október</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+            </select>
         </div>
 
-        <!-- Statisztikák szekció -->
-        <section id="charts" class="charts-container">
-            <h2>Havi összesítés</h2>
-            <!-- A diagramok ide kerülnek -->
-        </section>
+        <div class="charts-grid">
+            <!-- Bevétel/Kiadás arány -->
+            <div class="chart-card">
+                <h3>Bevétel/Kiadás arány</h3>
+                <canvas id="incomeExpenseChart"></canvas>
+            </div>
+
+            <!-- Heti bevételek trendje -->
+            <div class="chart-card">
+                <h3>Heti bevételek alakulása</h3>
+                <canvas id="weeklyIncomeChart"></canvas>
+            </div>
+
+            <!-- Kemon rendelés vs Vendég vásárlás -->
+            <div class="chart-card">
+                <h3>Kemon rendelés és Vendég vásárlás összehasonlítása</h3>
+                <canvas id="kemonVsGuestChart"></canvas>
+            </div>
+
+            <!-- Havi összefoglaló -->
+            <div class="chart-card summary-card">
+                <h3>Havi összefoglaló</h3>
+                <div id="monthlySummary">
+                    <div class="summary-item">
+                        <h4>Összes bevétel</h4>
+                        <p id="totalIncome">0 Ft</p>
+                    </div>
+                    <div class="summary-item">
+                        <h4>Tiszta haszon</h4>
+                        <p id="netProfit">0 Ft</p>
+                    </div>
+                    <div class="summary-item">
+                        <h4>Termék haszon</h4>
+                        <p id="productProfit">0 Ft</p>
+                    </div>
+                    <div class="summary-item">
+                        <h4>Legjobb hét</h4>
+                        <p id="bestWeek">-</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <script src="./script.js"></script>
+    <script src="charts.js"></script>
 </body>
 </html> 
 

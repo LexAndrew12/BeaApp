@@ -547,3 +547,69 @@ canvas {
     margin-bottom: 1rem;
     font-size: 0.9rem;
 }
+
+/* Statisztikák oldal stílusai */
+.charts-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.select-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 20px;
+}
+
+.chart-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.chart-card h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.summary-card {
+    background: var(--card-bg);
+}
+
+.summary-item {
+    margin-bottom: 15px;
+}
+
+.summary-item h4 {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+.summary-item p {
+    margin: 5px 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.back-button:hover {
+    background: var(--primary-color-dark);
+}
