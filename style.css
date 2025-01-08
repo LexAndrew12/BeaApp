@@ -12,6 +12,9 @@
     --border: rgba(255,255,255,0.1);
     --gradient: linear-gradient(135deg, #6C63FF, #FF6B95);
     --card-bg: rgba(40, 40, 56, 0.98);
+    --mobile-padding: 1rem;
+    --tablet-padding: 1.5rem;
+    --desktop-padding: 2rem;
 }
 
 body {
@@ -20,7 +23,7 @@ body {
     color: var(--text);
     min-height: 100vh;
     margin: 0;
-    padding: 0;
+    padding: var(--mobile-padding);
     position: relative;
 }
 
@@ -45,7 +48,7 @@ header {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     position: relative;
     z-index: 1;
-    padding: 1.5rem;
+    padding: var(--mobile-padding);
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -118,12 +121,19 @@ header p {
 }
 
 main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem;
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 2rem;
+    gap: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--mobile-padding);
+}
+
+/* Panel elrendezés */
+@media (min-width: 1024px) {
+    main {
+        grid-template-columns: 1fr 1fr;
+        padding: var(--desktop-padding);
+    }
 }
 
 /* Bal oldali panel (számológép) */
@@ -235,7 +245,7 @@ main {
     background: var(--card-bg);
     backdrop-filter: blur(20px);
     border-radius: 24px;
-    padding: 2rem;
+    padding: var(--mobile-padding);
     box-shadow: 
         0 8px 32px rgba(0, 0, 0, 0.3),
         0 0 0 1px rgba(255, 255, 255, 0.1);
@@ -546,7 +556,7 @@ button:hover::after {
 
 /* Statisztika oldal specifikus stílusok */
 .charts-container {
-    padding: 2rem;
+    padding: var(--mobile-padding);
     max-width: 1400px;
     margin: 0 auto;
 }
@@ -749,9 +759,9 @@ button:hover::after {
 .modal-content {
     background-color: var(--surface-light);
     border-radius: 20px;
-    padding: 1.5rem;
+    padding: var(--mobile-padding);
     width: 90%;
-    max-width: 400px;
+    max-width: 500px;
     max-height: 80vh;
     overflow-y: auto;
     position: relative;
@@ -1025,5 +1035,380 @@ button:hover::after {
     .primary-button {
         padding: 0.8rem 1.5rem;
         font-size: 0.95rem;
+    }
+}
+
+/* Általános reszponzív szabályok */
+@media (min-width: 1024px) {
+    main {
+        grid-template-columns: 1fr 1fr;
+        padding: var(--desktop-padding);
+    }
+}
+
+/* Számológép reszponzív design */
+@media (min-width: 768px) {
+    #calculator {
+        padding: var(--tablet-padding);
+    }
+    
+    .buttons {
+        gap: 1rem;
+    }
+    
+    .buttons button {
+        padding: 1.2rem;
+        font-size: 1.3rem;
+    }
+}
+
+/* Táblázat reszponzív design */
+table {
+    width: 100%;
+    min-width: 300px;
+    overflow-x: auto;
+    display: block;
+}
+
+@media (min-width: 768px) {
+    table {
+        display: table;
+    }
+}
+
+/* Charts oldal reszponzív design */
+.charts-container {
+    padding: var(--mobile-padding);
+}
+
+.charts-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .charts-container {
+        padding: var(--tablet-padding);
+    }
+    
+    .charts-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .charts-container {
+        padding: var(--desktop-padding);
+    }
+    
+    .charts-grid {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 2rem;
+    }
+}
+
+/* Modal reszponzív design */
+.modal-content {
+    width: 90%;
+    max-width: 500px;
+    padding: var(--mobile-padding);
+}
+
+@media (min-width: 768px) {
+    .modal-content {
+        padding: var(--tablet-padding);
+    }
+}
+
+/* Header reszponzív design */
+header {
+    padding: var(--mobile-padding);
+}
+
+@media (min-width: 768px) {
+    header {
+        padding: var(--tablet-padding);
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    header {
+        padding: var(--desktop-padding);
+    }
+    
+    header h1 {
+        font-size: 2.4rem;
+    }
+}
+
+/* Select mezők reszponzív design */
+.select-group select,
+.select-container select {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+}
+
+@media (min-width: 768px) {
+    .select-group select,
+    .select-container select {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* Gombok reszponzív design */
+.primary-button,
+.input-trigger-button,
+.reset-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+}
+
+@media (min-width: 768px) {
+    .primary-button,
+    .input-trigger-button,
+    .reset-button {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+/* Summary card reszponzív design */
+.summary-item {
+    padding: 0.8rem;
+}
+
+@media (min-width: 768px) {
+    .summary-item {
+        padding: 1rem;
+    }
+    
+    .summary-item h4 {
+        font-size: 1rem;
+    }
+    
+    .summary-item p {
+        font-size: 1.3rem;
+    }
+}
+
+/* Font méret optimalizálás */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 1024px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* Érintőképernyős optimalizálás */
+@media (hover: none) {
+    .buttons button,
+    .primary-button,
+    .input-trigger-button,
+    .reset-button {
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .select-group select,
+    .select-container select {
+        font-size: 16px; /* iOS zoom bug elkerülése */
+    }
+}
+
+/* Orientáció kezelése */
+@media (orientation: landscape) and (max-height: 500px) {
+    .modal-content {
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+}
+
+/* Login/Auth oldal reszponzív design */
+.auth-page {
+    padding: var(--mobile-padding);
+    min-height: 100vh;
+}
+
+.auth-box {
+    width: 90%;
+    max-width: 400px;
+    padding: var(--mobile-padding);
+}
+
+@media (min-width: 768px) {
+    .auth-page {
+        padding: var(--tablet-padding);
+    }
+    
+    .auth-box {
+        padding: var(--tablet-padding);
+    }
+    
+    .auth-header h2 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .auth-box {
+        padding: var(--desktop-padding);
+    }
+}
+
+/* Charts oldal specifikus reszponzív design */
+.chart-card {
+    min-height: 300px;
+    padding: var(--mobile-padding);
+}
+
+.chart-card canvas {
+    max-height: 60vh;
+}
+
+@media (min-width: 768px) {
+    .chart-card {
+        padding: var(--tablet-padding);
+    }
+}
+
+@media (min-width: 1024px) {
+    .chart-card {
+        padding: var(--desktop-padding);
+    }
+}
+
+/* Index oldal specifikus reszponzív design */
+.left-panel,
+.right-panel {
+    padding: var(--mobile-padding);
+}
+
+@media (max-width: 1023px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+    
+    .left-panel,
+    .right-panel {
+        width: 100%;
+    }
+}
+
+/* Számológép további optimalizálása */
+@media (max-width: 360px) {
+    .buttons {
+        gap: 0.5rem;
+    }
+    
+    .buttons button {
+        padding: 0.7rem;
+        font-size: 1rem;
+    }
+}
+
+/* Táblázat további optimalizálása */
+@media (max-width: 480px) {
+    table th,
+    table td {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Modal további optimalizálása */
+@media (max-width: 480px) {
+    .category-buttons {
+        grid-template-columns: 1fr;
+    }
+    
+    .category-group {
+        flex-direction: column;
+    }
+}
+
+/* Header további optimalizálása */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .back-button,
+    .logout-button {
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
+    }
+}
+
+/* Általános szöveg olvashatóság */
+@media (max-width: 360px) {
+    body {
+        font-size: 0.9rem;
+    }
+    
+    h2 {
+        font-size: 1.3rem;
+    }
+    
+    h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Landscape mód kezelése kis képernyőkön */
+@media (orientation: landscape) and (max-height: 600px) {
+    .auth-box {
+        margin: 1rem auto;
+    }
+    
+    .chart-card {
+        min-height: auto;
+    }
+    
+    .chart-card canvas {
+        max-height: 40vh;
+    }
+}
+
+/* Nagy felbontású kijelzők kezelése */
+@media (min-width: 1400px) {
+    html {
+        font-size: 18px;
+    }
+    
+    .auth-box {
+        max-width: 450px;
+    }
+    
+    .charts-grid {
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    }
+}
+
+/* Nyomtatási stílusok */
+@media print {
+    .chart-card {
+        break-inside: avoid;
+    }
+    
+    .back-button,
+    .logout-button,
+    .input-trigger-button,
+    .reset-button {
+        display: none;
     }
 }
